@@ -58,13 +58,14 @@ export class Personnage {
 
     // Méthode choix d'arme
     public choisirArme(nb: number) {
+        console.log('choisirArme : ' + nb);
         if (nb === 1) {
-            return new Arme1(10, 20, 20);
+            return new Arme1();
         };
         if (nb === 2) {
-            return new Arme2(10, 20, 20);
+            return new Arme2();
         } else {
-            return new Arme(10, 20, 20);
+            return new Arme(2, 5, 7);
         };
     };
 

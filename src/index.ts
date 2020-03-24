@@ -1,22 +1,38 @@
-// import * as readline from 'readline';
+import * as readline from 'readline';
 
 import { startGame } from "./Services/PartieService";
 
-// let rl = readline.createInterface({
-//     input: process.stdin,
-//     output: process.stdout
-// });
+const inputReader = async (question: string) => {
+    let response;
 
-// rl.question('Voulez-vous créer un personnage ? [y/n]', (answerCreate) => {
-//     if (answerCreate === 'y') {
-//         rl.question('Nommez votre personnage : ', (answerNom) => {
-//             console.log(`Votre personnage s'appelle : ${answerNom}`);
-//         });
-//         rl.question('Choisissez une arme : [1 : Epee / 2 : Fusil]', (answer) => {
-//         });
-//     } else {
-//         rl.close();
-//     }
-// });
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+        terminal: false
+    });
 
-startGame();
+    await new Promise((resolve, reject) => {
+        rl.question(question, (answer: string) => {
+            resolve(answer);
+        })
+    }).then(onfull => {
+        response = onfull;
+        rl.close();
+    });
+    return response;
+};
+
+// Méthode création personnage
+const createPerso = async () => {
+    // Lit l'input nom
+    let choixNom = await inputReader('Nommez votre gentil : ');
+    console.log('nom du gentil : ' + choixNom);
+    // Lit l'input arme
+    let choixArme = await inputReader('Choisissez votre arme : 1 [ou] 2 : ');
+    console.log('choix arme : ' + choixArme)
+    // Appel à la méthode du service
+    // Stringify nom & number arme (sinon type undefined)
+    startGame(JSON.stringify(choixNom), Number(choixArme));
+};
+
+createPerso();

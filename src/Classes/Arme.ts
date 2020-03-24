@@ -4,9 +4,9 @@ export class Arme {
     _chanceCC: number;
 
     constructor(minDegat: number, maxDegat: number, chanceCC: number) {
-        this._minDegat = Math.floor(Math.random() * 10) + 1;
-        this._maxDegat = Math.floor(Math.random() * 10) + 11;
-        this._chanceCC = Math.floor(Math.random() * 20) + 1;
+        this._minDegat = minDegat;
+        this._maxDegat = maxDegat;
+        this._chanceCC = chanceCC;
     }
 
     getMinDegat() {
@@ -35,11 +35,9 @@ export class Arme {
 }
 
 export class Arme1 extends Arme {
-    _chanceCCSupp: number;
 
-    constructor(minDegat: number, maxDegat: number, chanceCC: number, chanceCCSupp = 20) {
+    constructor(minDegat = 2, maxDegat = 10, chanceCC = 20) {
         super(minDegat, maxDegat, chanceCC);
-        this._chanceCCSupp = chanceCCSupp;
     }
 
     getMinDegat() {
@@ -54,10 +52,6 @@ export class Arme1 extends Arme {
         return this._chanceCC;
     }
 
-    getChanceCCSupp() {
-        return this._chanceCCSupp;
-    }
-
     setMinDegat(minDegat: number) {
         this._minDegat = minDegat;
     }
@@ -68,19 +62,13 @@ export class Arme1 extends Arme {
 
     setChanceCC(chanceCC: number) {
         this._chanceCC = chanceCC;
-    }
-
-    setChanceCCSupp(chanceCCSupp: number) {
-        this._chanceCCSupp = chanceCCSupp;
     }
 }
 
 export class Arme2 extends Arme {
-    _maxDegatSupp: number;
 
-    constructor(minDegat: number, maxDegat: number, chanceCC: number, maxDegatSupp = 20) {
+    constructor(minDegat = 2, maxDegat = 20, chanceCC = 10) {
         super(minDegat, maxDegat, chanceCC);
-        this._maxDegatSupp = maxDegatSupp;
     }
 
 
@@ -96,10 +84,6 @@ export class Arme2 extends Arme {
         return this._chanceCC;
     }
 
-    getMaxDegatSupp() {
-        return this._maxDegatSupp;
-    }
-
     setMinDegat(minDegat: number) {
         this._minDegat = minDegat;
     }
@@ -110,9 +94,5 @@ export class Arme2 extends Arme {
 
     setChanceCC(chanceCC: number) {
         this._chanceCC = chanceCC;
-    }
-
-    setMaxDegatSupp(maxDegatSupp: number) {
-        this._maxDegatSupp = maxDegatSupp;
     }
 }
